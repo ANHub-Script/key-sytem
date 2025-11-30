@@ -10,7 +10,7 @@ const elements = {
 
 // Configuration
 // CHANGE THIS TO YOUR REPO: "username/repo-name"
-const REPO_NAME = "USER_NAME/REPO_NAME"; 
+const REPO_NAME = "ANHub-Script/key-sytem"; 
 
 // On Load: Check for HWID in URL
 window.addEventListener('DOMContentLoaded', () => {
