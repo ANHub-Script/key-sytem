@@ -32,10 +32,15 @@ jobs:
 
           echo "HWID Detected: $HWID"
           
-          # Generate Key (Deterministic Hash)
-          # Using md5sum for simplicity, taking first 12 chars
-          RAW_KEY=$(echo -n "${HWID}WINDUI_SECRET_SALT_2025" | md5sum | awk '{print $1}')
-          KEY="ANHUB_${RAW_KEY:0:12}"
+          # Generate Key (Deterministic Hash - Matches Client JS DJB2)
+          KEY=$(node -e '
+            const str = process.argv[1] + "WINDUI_SECRET_SALT_2025";
+            let hash = 5381;
+            for (let i = 0; i < str.length; i++) {
+                hash = ((hash << 5) + hash) + str.charCodeAt(i);
+            }
+            console.log("ANHUB_" + Math.abs(hash).toString(16).toUpperCase().substring(0, 12));
+          ' "$HWID")
           
           echo "Generated Key: $KEY"
           
