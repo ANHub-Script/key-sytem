@@ -1,0 +1,6 @@
+# Database Key
+# Format: HWID KEY
+
+# Contoh:
+# ABC-123-XYZ ANHUB_7F2A9B1C
+# HWID-USER-1 ANHUB_9928A1B2
